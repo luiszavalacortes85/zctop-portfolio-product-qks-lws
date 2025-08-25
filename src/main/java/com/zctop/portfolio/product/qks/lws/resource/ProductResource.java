@@ -82,7 +82,7 @@ public class ProductResource {
     @Path("/update/")
     public ProductResponse update(ProductRequest productRequest) {
         var product = productService.updateProduct(productRequest.getId(), productRequest.getName(),
-                                                   productRequest.getPrice(), productRequest.getCid());
+                                                   productRequest.getPrice());
         return productService.createResponse(product);
     }
 
@@ -92,7 +92,6 @@ public class ProductResource {
         var product = productService.getProduct(id);
         productService.deleteProduct(product.id);
         product.name = null;
-        product.customer = null;
         product.price = null;
         return productService.createResponse(product);
     }

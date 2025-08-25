@@ -1,8 +1,9 @@
 package com.zctop.portfolio.product.qks.lws.model.db;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+import io.quarkus.runtime.annotations.RegisterForReflection;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
@@ -16,16 +17,28 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@RegisterForReflection
+@Table(name = "customers")
 @EqualsAndHashCode(callSuper = true)
-public class Customer extends PanacheEntity implements Serializable {
+public class Customer extends PanacheEntityBase implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 2988221487827670835L;
 
+    @Id
+    @Column(name = "customer_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long id;
+
     public String name;
+    public String rfc;
     public String email;
 
-    @OneToMany(mappedBy = "customer")
-    public List<Product> products;
+    public Customer(String name, String rfc, String email) {
+        this.name = name;
+        this.rfc = rfc;
+        this.email = email;
+    }
+
 
 }

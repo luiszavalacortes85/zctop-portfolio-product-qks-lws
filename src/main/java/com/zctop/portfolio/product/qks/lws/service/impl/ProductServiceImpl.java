@@ -35,9 +35,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional(rollbackOn = Exception.class)
-    public Product updateProduct(Long id, String name, Double price, Long cid) {
+    public Product updateProduct(Long id, String name, Double price) {
         log.info("Update product [{}] with id [{}]", name, id);
-        return productRepository.updateProduct(id, name, price, cid);
+        return productRepository.updateProduct(id, name, price);
     }
 
     @Override

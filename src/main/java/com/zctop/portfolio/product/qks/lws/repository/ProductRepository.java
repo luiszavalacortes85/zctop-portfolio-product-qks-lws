@@ -10,7 +10,7 @@ public interface ProductRepository {
 
     Product getProduct(Long id);
 
-    Product updateProduct(Long id, String name, Double price, Long cid);
+    Product updateProduct(Long id, String name, Double price);
 
     void deleteProduct(Long id);
 

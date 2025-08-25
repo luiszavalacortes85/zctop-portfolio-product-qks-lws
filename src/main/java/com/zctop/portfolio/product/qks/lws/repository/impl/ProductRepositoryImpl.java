@@ -18,7 +18,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public Product addProduct(String name, Double price) {
-        var product = new Product(name, price, null);
+        var product = new Product(name, price);
         product.persist();
         return product;
     }
@@ -29,16 +29,13 @@ public class ProductRepositoryImpl implements ProductRepository {
     }
 
     @Override
-    public Product updateProduct(Long id, String name, Double price, Long cid) {
+    public Product updateProduct(Long id, String name, Double price) {
         Product product = Product.findById(id);
         if (product == null) {
             throw new ProductException("Product not found", 404);
         }
         product.name = name;
         product.price = price;
-        if (cid != null) {
-            product.customer = Customer.findById(cid);
-        }
         return product;
     }
 

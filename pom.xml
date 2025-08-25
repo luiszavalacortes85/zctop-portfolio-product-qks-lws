@@ -3,8 +3,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <parent>
-        <groupId>com.fonyou.root</groupId>
-        <artifactId>root-parent-qks-pom</artifactId>
+        <groupId>com.zctop.root</groupId>
+        <artifactId>zctop-maven-parent-qks-pom</artifactId>
         <version>1.0-RC1</version>
     </parent>
 
